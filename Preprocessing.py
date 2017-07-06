@@ -13,10 +13,6 @@ def process_phonemes(filename):
         if phoneme == '  ':
             continue
 
-        # new_text[-1][2] = toInt(new_row[1]) if phoneme == new_text[-1][2] else \
-        #     new_text.append([phoneme, toInt(new_row[0]), toInt(new_row[1])]) if len(new_text) != 0 else \
-        #         new_text.append([phoneme, toInt(new_row[0]), toInt(new_row[1])])
-
         if len(new_text) != 0:
             if phoneme == new_text[-1][2]:
                 new_text[-1][2] = toInt(new_row[1])

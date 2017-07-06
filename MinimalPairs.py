@@ -23,11 +23,9 @@ def json_writer(filename):
                     info.append(group)
                 group = []
                 minimal_pairs.append([Preprocessing.timitToPhoneme(row[1]), Preprocessing.timitToPhoneme(row[2])])
-            elif row[6] == '32509':
-                group.append(row)
-                info.append(group)
             else:
                 group.append(row)
+        info.append(group)
 
     for pair_index in range(0, len(info)):
         pairs = []
@@ -73,12 +71,7 @@ def build_phoneme_object(pair_index, word_index, info):
         start = 0 if phoneme_index == 3 else \
             Preprocessing.toInt((info[pair_index][word_index + 1][phoneme_index - 1])) + 1
         end = Preprocessing.toInt(info[pair_index][word_index + 1][phoneme_index])
-        # if phoneme_index == 3:
-        #     start = 0
-        #     end = Preprocessing.toInt(info[pair_index][word_index + 1][phoneme_index])
-        # else:
-        #     end = Preprocessing.toInt(info[pair_index][word_index + 1][phoneme_index])
-        #     start = Preprocessing.toInt((info[pair_index][word_index + 1][phoneme_index - 1])) + 1
+
         phoneme = {'phoneme': info[pair_index][word_index][phoneme_index],
                    'start': start,
                    'end': end
